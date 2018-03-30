@@ -1,0 +1,19 @@
+This file contains a list of the executable files in the "bin" folder, along with relevant descriptions and context. Any new executables added to the "bin" folder should have a corresponding entry here.
+
+rc11x_range_testing_node_1_1.out
+--------------------------------
+Description: Firmware used for RF testing of Node; allows the Radiocrafts module to be put into different modes through either a button or the IR interface.
+Hardware Platform: Node 1.1
+Microcontroller: MSP430F6733
+Generation Date: 24 July 2014
+Commit Hash: 7b99ceb
+Main File: gpos/hal/node_1_1/stubs/rc11x_range_testing.cpp
+
+rc11x_range_testing_pmu_5_3.out
+-------------------------------
+Description: Firmware used for RF testing of PMU; allows the Radiocrafts module to be put into different modes through the IR interface.
+Hardware Platform: PMU 5.3
+Microcontroller: MSP430F6733
+Generation Date: 24 July 2014
+Commit Hash: 1430bcc
+Main File: gpos/hal/pmu_5_3/stubs/rc11x_range_testing.cpp
