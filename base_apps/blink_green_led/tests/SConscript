@@ -1,0 +1,10 @@
+# SConscript
+# Build file for the dtest of the blink_green_led app.
+# 
+# Copyright 2014 Gram Power, Inc.
+
+Import('env')
+env.Append(CPPPATH=['.', '..', '../mocks'])
+
+# Create the test program
+env.Program('dtest', env['DEFAULT_SOURCE_FILES'] + ['blink_green_led_app_dtest.cpp', '../blink_green_led_app.cpp'])

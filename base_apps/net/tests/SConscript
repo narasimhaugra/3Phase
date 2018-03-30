@@ -1,0 +1,13 @@
+# SConscript
+# Build file for the dtest of the net app.
+# 
+# Copyright 2014 Gram Power, Inc.
+
+Import('env')
+env.Append(CPPPATH=['.', '..', '../mocks'])
+
+# Create the test program
+env.Program('dtest', env['DEFAULT_SOURCE_FILES'] + ['net_app_dtest.cpp', '../net_app.cpp', 
+                                                     '../mailbox/mailbox.cpp', 
+                                                     '../tapframe/tapframe_interface.cpp', 
+                                                     '../tapframe/tapframe_parser.cpp'])

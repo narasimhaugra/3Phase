@@ -1,0 +1,38 @@
+#!/usr/bin/python
+#
+import getpass
+username = getpass.getuser()
+gp_include_base = '/home/{}/grampower'.format(username)
+
+# Include paths for the Google test and Google mock frameworks
+gtest_include_paths = [gp_include_base + '/gmock-1.7.0/gtest/include',
+                       gp_include_base + '/gmock-1.7.0/include']
+
+# Include paths for Gram Power resource - GPOS and Node
+gp_include_paths = [gp_include_base + '/gpos_fw/',
+                    gp_include_base + '/node_fw/energy_meter_apps',
+                    gp_include_base + '/node_fw',
+                    gp_include_base + '/gpos_fw/gpos/utils']
+
+# Source files to compile into all tests
+gp_source_files = [
+                   #gp_include_base + '/gpos_fw/gpos/hardware/boards/node_1_1/mocks/board_node_1_1.cpp',
+                   gp_include_base + '/gpos_fw/gpos/utils/time/mytime.cpp',
+                   gp_include_base + '/gpos_fw/gpos/utils/time/stop_watch.cpp',
+                   gp_include_base + '/gpos_fw/gpos/utils/serialize/serialize.cpp']
+
+# Tests to compile, given as the paths to the SConscript files
+scripts = ['blink_green_led/tests/SConscript',
+           'net/tests/SConscript',
+           'logger/tests/SConscript',
+           'nvm_controller/tests/SConscript']
+
+# Set up the common compile environment for all tests
+env = Environment(CC='g++',
+                  CPPPATH=gtest_include_paths + gp_include_paths,
+                  LIBPATH=['/home/{}/grampower/gmock-1.7.0/make'.format(username)],
+                  LIBS=['gmock_main', 'pthread'])
+env['DEFAULT_SOURCE_FILES'] = gp_source_files
+
+# Include all tests in this build, passing the environment we just set up
+SConscript(scripts, exports='env')

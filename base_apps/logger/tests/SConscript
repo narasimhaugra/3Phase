@@ -1,0 +1,10 @@
+# SConscript
+# Build file for the dtest of the logger app.
+# 
+# Copyright 2014 Gram Power, Inc.
+
+Import('env')
+env.Append(CPPPATH=['.', '..', '../mocks'])
+
+# Create the test program
+env.Program('dtest', env['DEFAULT_SOURCE_FILES'] + ['logger_app_dtest.cpp', '../logger_app.cpp'])
