@@ -1,0 +1,202 @@
+Created by PLY version 3.4 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> operation
+Rule 1     operation -> NOTFOUND WORD DOT WORD
+Rule 2     operation -> RUNNING WORD DOT WORD
+Rule 3     operation -> INPUT WORD
+Rule 4     operation -> PASS WORD DOT WORD
+Rule 5     operation -> FAIL WORD DOT WORD NUMBER
+Rule 6     operation -> ERROR WORD
+
+Terminals, with rules where they appear
+
+DOT                  : 1 2 4 5
+ERROR                : 6
+FAIL                 : 5
+INPUT                : 3
+NOTFOUND             : 1
+NUMBER               : 5
+PASS                 : 4
+RUNNING              : 2
+WORD                 : 1 1 2 2 3 4 4 5 5 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+operation            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . operation
+    (1) operation -> . NOTFOUND WORD DOT WORD
+    (2) operation -> . RUNNING WORD DOT WORD
+    (3) operation -> . INPUT WORD
+    (4) operation -> . PASS WORD DOT WORD
+    (5) operation -> . FAIL WORD DOT WORD NUMBER
+    (6) operation -> . ERROR WORD
+
+    NOTFOUND        shift and go to state 1
+    RUNNING         shift and go to state 3
+    INPUT           shift and go to state 6
+    PASS            shift and go to state 4
+    FAIL            shift and go to state 5
+    ERROR           shift and go to state 2
+
+    operation                      shift and go to state 7
+
+state 1
+
+    (1) operation -> NOTFOUND . WORD DOT WORD
+
+    WORD            shift and go to state 8
+
+
+state 2
+
+    (6) operation -> ERROR . WORD
+
+    WORD            shift and go to state 9
+
+
+state 3
+
+    (2) operation -> RUNNING . WORD DOT WORD
+
+    WORD            shift and go to state 10
+
+
+state 4
+
+    (4) operation -> PASS . WORD DOT WORD
+
+    WORD            shift and go to state 11
+
+
+state 5
+
+    (5) operation -> FAIL . WORD DOT WORD NUMBER
+
+    WORD            shift and go to state 12
+
+
+state 6
+
+    (3) operation -> INPUT . WORD
+
+    WORD            shift and go to state 13
+
+
+state 7
+
+    (0) S' -> operation .
+
+
+
+state 8
+
+    (1) operation -> NOTFOUND WORD . DOT WORD
+
+    DOT             shift and go to state 14
+
+
+state 9
+
+    (6) operation -> ERROR WORD .
+
+    $end            reduce using rule 6 (operation -> ERROR WORD .)
+
+
+state 10
+
+    (2) operation -> RUNNING WORD . DOT WORD
+
+    DOT             shift and go to state 15
+
+
+state 11
+
+    (4) operation -> PASS WORD . DOT WORD
+
+    DOT             shift and go to state 16
+
+
+state 12
+
+    (5) operation -> FAIL WORD . DOT WORD NUMBER
+
+    DOT             shift and go to state 17
+
+
+state 13
+
+    (3) operation -> INPUT WORD .
+
+    $end            reduce using rule 3 (operation -> INPUT WORD .)
+
+
+state 14
+
+    (1) operation -> NOTFOUND WORD DOT . WORD
+
+    WORD            shift and go to state 18
+
+
+state 15
+
+    (2) operation -> RUNNING WORD DOT . WORD
+
+    WORD            shift and go to state 19
+
+
+state 16
+
+    (4) operation -> PASS WORD DOT . WORD
+
+    WORD            shift and go to state 20
+
+
+state 17
+
+    (5) operation -> FAIL WORD DOT . WORD NUMBER
+
+    WORD            shift and go to state 21
+
+
+state 18
+
+    (1) operation -> NOTFOUND WORD DOT WORD .
+
+    $end            reduce using rule 1 (operation -> NOTFOUND WORD DOT WORD .)
+
+
+state 19
+
+    (2) operation -> RUNNING WORD DOT WORD .
+
+    $end            reduce using rule 2 (operation -> RUNNING WORD DOT WORD .)
+
+
+state 20
+
+    (4) operation -> PASS WORD DOT WORD .
+
+    $end            reduce using rule 4 (operation -> PASS WORD DOT WORD .)
+
+
+state 21
+
+    (5) operation -> FAIL WORD DOT WORD . NUMBER
+
+    NUMBER          shift and go to state 22
+
+
+state 22
+
+    (5) operation -> FAIL WORD DOT WORD NUMBER .
+
+    $end            reduce using rule 5 (operation -> FAIL WORD DOT WORD NUMBER .)
+
